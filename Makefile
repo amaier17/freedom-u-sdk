@@ -213,6 +213,10 @@ clean:
 sim: $(spike) $(bbl)
 	$(spike) --isa=$(ISA) -p4 $(bbl)
 
+.PHONY: prep-qemu
+prep-qemu: $(qemu) $(bbl) $(rootfs)
+	echo "QEMU prepped"
+
 .PHONY: qemu
 qemu: $(qemu) $(bbl) $(rootfs)
 	$(qemu) -nographic -machine virt -kernel $(bbl) \
